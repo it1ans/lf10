@@ -1,0 +1,38 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MariaDB",
+            "name": "localhost",
+            "database": "app",
+            "username": "app"
+        }
+    ],
+    "php.suggest.basic": false,
+    "editor.quickSuggestions": {
+        "comments": true
+    },
+    "intelephense.files.exclude": [
+        "**/.git/**",
+        "**/.svn/**",
+        "**/.hg/**",
+        "**/CVS/**",
+        "**/.DS_Store/**",
+        "**/node_modules/**",
+        "**/bower_components/**",
+        "**/vendor/**/{Test,test,Tests,tests}/**/*Test.php"
+    ],
+    "php-cs-fixer.rules": "@PhpCsFixer",
+    "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
+    "[php]": {
+        "editor.defaultFormatter": "junstyle.php-cs-fixer",
+        "editor.formatOnSave": true
+    },
+    "emmet.includeLanguages": { "twig": "html" },
+}
