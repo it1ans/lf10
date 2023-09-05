@@ -1,4 +1,13 @@
 // example overriding bootstrap variables
 // $primary: darken(#428bca, 20%);
-
+$body-tertiary-bg: darken(#ffffff, 5%);
 @import "~bootstrap/scss/bootstrap";
+
+// Custom classes
+
+.container-middle{
+    @extend .container;
+    margin-top: 100px;
+    background-color: $body-tertiary-bg;
+    border-radius: 5px;
+}
