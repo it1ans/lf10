@@ -1,5 +1,4 @@
-$background-color: green;
+// example overriding bootstrap variables
+// $primary: darken(#428bca, 20%);
 
-body {
-    background-color: $background-color;
-}
+@import "~bootstrap/scss/bootstrap";
