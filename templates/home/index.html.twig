@@ -1,77 +1,33 @@
 {% extends 'base.html.twig' %}
-{% block title %}Hello HomeController!
+{% block title %}
+  Home | StayFit
 {% endblock %}
 
 {% block body %}
-	<nav class="navbar navbar-expand-lg bg-body-tertiary">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="#">StayFit</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+  <div class="container-fluid mt-3 d-flex justify-content-center">
+    <div class="card" style="max-width: 400px">
+      <div class="card-body">
+        <h3 class="text-center">{{ app.user.email ?? 'Anonymous user' }}</h3>
+        <hr />
 
-			<button class="order-3 m-1 btn btn-outline-secondary" type="button">Login</button>
-			<button class="order-3 m-1 btn btn-outline-secondary" type="button">Register</button>
+        <div class="d-flex justify-content-evenly">
+          <div>
+            <p class="fw-bold">Current</p>
+            <p class="fw-bold">Current</p>
+          </div>
+          <div>
+            <p>3245</p>
+            <p>12</p>
+          </div>
+        </div>
 
-			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-				<div class="navbar-nav">
-					<a class="nav-link active" aria-current="page" href="#">Home</a>
-					<a class="nav-link" href="#">Profile</a>
-					<a class="nav-link" href="#">FAQ</a>
-					<a class="nav-link disabled" aria-disabled="true">Recipes</a>
-				</div>
-			</div>
-		</div>
-	</nav>
-
-	<div class="container-middle position-relative w-25">
-		<div class="text-center">
-			<p class="h3">USERNAME</p>
-			<hr class="hr"/>
-		</div>
-		<br>
-
-		<div class="container text-center w-75 top-0 start-50">
-			<div class="row">
-				<div class="col text-start"><b>Current</b></div>
-				<div class="col text-start">VALUE</div>
-			</div>
-			<div class="row">
-				<div class="col text-start"><b>Remaining</b></div>
-				<div class="col text-start">VALUE</div>
-			</div>
-		</div>
-
-							<!-- OLD IDEA -->
-		<div>
-			<table class="table text-center w-50 top-0 start-50">
-				<tbody>
-					<tr>
-						<td class="text-start">
-							<b>Current</b>
-						</td>
-						<td class="text-start">50.000</td>
-					</tr>
-
-					<tr>
-						<td class="text-start">
-							<b>Remaining</b>
-						</td>
-						<td class="text-start">-3.000</td>
-
-					</tr>
-				</tbody>
-			</table>
-		</div>
-
-		<br>
-		<div class="input-group mb-3 w-75 translate-middle-x top-0 start-50">
-			<button type="submit" class="btn btn-outline-secondary">Add</button>
-			<button type="submit" class="btn btn-outline-secondary">Remove</button>
-			<input type="text" class="form-control" aria-label="Amount">
-			<span class="input-group-text">Cal.</span>
-		</div>
-	</div>
-
+        <div class="mt-2 input-group">
+          <button type="submit" class="btn btn-outline-secondary">Add</button>
+          <button type="submit" class="btn btn-outline-secondary">Remove</button>
+          <input type="text" class="form-control" />
+          <span class="input-group-text">Cal.</span>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
-

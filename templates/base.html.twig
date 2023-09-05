@@ -1,30 +1,50 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>
-			{% block title %}Welcome!{% endblock %}
-		</title>
-		<link
-		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-		{% block stylesheets %}
-			{{ encore_entry_link_tags('app') }}
-		{% endblock %}
+  <head>
+    <meta charset="UTF-8" />
+    <title>
+      {% block title %}
+        Welcome!
+      {% endblock %}
+    </title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>" />
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {% block stylesheets %}
+      {{ encore_entry_link_tags('app') }}
+    {% endblock %}
 
-		{% block javascripts %}
-			{{ encore_entry_script_tags('app') }}
-		{% endblock %}
-	</head>
-	<body>
-		{% for message in app.flashes('success') %}
-			<div class="alert alert-success" role="alert">
-				{{ message }}
-			</div>
-		{% endfor %}
+    {% block javascripts %}
+      {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">StayFit</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
-        <a href="{{ path("app_logout") }}" class="btn btn-secondary">Logout</a>
+        {% if is_granted('ROLE_USER') %}
+          <a class="order-3 m-1 btn btn-outline-secondary" type="button" href="{{ path('app_logout') }}">Logout</a>
+        {% else %}
+          <a class="order-3 m-1 btn btn-outline-secondary" type="button" href="{{ path('app_login') }}">Login</a>
+          <a class="order-3 m-1 btn btn-outline-secondary" type="button" href="{{ path('app_register') }}">Register</a>
+        {% endif %}
 
-		{% block body %}{% endblock %}
-	</body>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="{{ path('app_home') }}">Home</a>
+            <a class="nav-link" href="#">Profile</a>
+            <a class="nav-link" href="#">FAQ</a>
+            <a class="nav-link disabled" aria-disabled="true">Recipes</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    {% for message in app.flashes('success') %}
+      <div class="alert alert-success" role="alert">{{ message }}</div>
+    {% endfor %}
+
+    {% block body %}
+    {% endblock %}
+  </body>
 </html>
