@@ -1,9 +1,33 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}
+  Home | StayFit
+{% endblock %}
 
 {% block body %}
+  <div class="container-fluid mt-3 d-flex justify-content-center">
+    <div class="card" style="max-width: 400px">
+      <div class="card-body">
+        <h3 class="text-center">{{ app.user.email ?? 'Anonymous user' }}</h3>
+        <hr />
 
-<input type="button" class="btn btn-primary" value="Test">
+        <div class="d-flex justify-content-evenly">
+          <div>
+            <p class="fw-bold">Current</p>
+            <p class="fw-bold">Current</p>
+          </div>
+          <div>
+            <p>3245</p>
+            <p>12</p>
+          </div>
+        </div>
 
+        <div class="mt-2 input-group">
+          <button type="submit" class="btn btn-outline-secondary">Add</button>
+          <button type="submit" class="btn btn-outline-secondary">Remove</button>
+          <input type="text" class="form-control" />
+          <span class="input-group-text">Cal.</span>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
