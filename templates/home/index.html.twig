@@ -4,28 +4,53 @@
 {% endblock %}
 
 {% block body %}
-  <div class="container-fluid mt-3 d-flex justify-content-center">
-    <div class="card" style="max-width: 400px">
-      <div class="card-body">
-        <h3 class="text-center">{{ app.user.email ?? 'Anonymous user' }}</h3>
-        <hr />
-
-        <div class="d-flex justify-content-evenly">
-          <div>
-            <p class="fw-bold">Current</p>
-            <p class="fw-bold">Current</p>
-          </div>
-          <div>
-            <p>3245</p>
-            <p>12</p>
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="text-center">{{ app.user.email }}</h3>
+            <hr />
+            <div class="d-flex justify-content-evenly">
+              <div>
+                <p class="fw-bold">Current</p>
+                <p class="fw-bold">Current</p>
+              </div>
+              <div>
+                <p>3245</p>
+                <p>12</p>
+              </div>
+            </div>
+            <div class="mt-2 input-group">
+              <button type="submit" class="btn btn-outline-secondary">Add</button>
+              <button type="submit" class="btn btn-outline-secondary">Remove</button>
+              <label for="text-input1"></label>
+              <input type="text" class="form-control" id="text-input1" />
+              <span class="input-group-text">Cal.</span>
+            </div>
           </div>
         </div>
-
-        <div class="mt-2 input-group">
-          <button type="submit" class="btn btn-outline-secondary">Add</button>
-          <button type="submit" class="btn btn-outline-secondary">Remove</button>
-          <input type="text" class="form-control" />
-          <span class="input-group-text">Cal.</span>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="text-center">{{ app.user.name }}</h3>
+            <hr />
+            <div class="d-flex justify-content-evenly">
+              <div>
+                <p>Age</p>
+                <p>Height</p>
+                <p>Body Type</p>
+                <p class="fw-bold">Ideal Weight</p>
+              </div>
+              <div>
+                <p>{{ app.user.age }}</p>
+                <p>{{ app.user.height }}</p>
+                <p>{{ app.user.bodyType.value|capitalize }}</p>
+                <p>{{ idealWeight }}kg</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
