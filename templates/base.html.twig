@@ -18,12 +18,13 @@
     {% endblock %}
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="{{ path('app_home') }}">StayFit</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
         {% if is_granted('ROLE_USER') %}
+          <a class="order-3 m-1 btn btn-outline-primary" type="button" href="{{ path('app_user_edit') }}">Settings</a>
           <a class="order-3 m-1 btn btn-outline-secondary" type="button" href="{{ path('app_logout') }}">Logout</a>
         {% else %}
           <a class="order-3 m-1 btn btn-outline-secondary" type="button" href="{{ path('app_login') }}">Login</a>

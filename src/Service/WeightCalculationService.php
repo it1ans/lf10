@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use App\Enum\BodyType;
-use App\Enum\Gender;
+use App\Enum\BodyTypeEnum;
+use App\Enum\GenderEnum;
 
 class WeightCalculationService implements WeightCalculationServiceInterface
 {
-    public function calculateIdealWeight(int $height, int $age, BodyType $bodyType): float
+    public function calculateIdealWeight(int $height, int $age, BodyTypeEnum $bodyType): float
     {
         return (($height - 100) + ($age / 10)) * $bodyType->define();
     }
@@ -19,11 +19,11 @@ class WeightCalculationService implements WeightCalculationServiceInterface
         return $calories - $alreadyEaten;
     }
 
-    public function calculateDailyCalories(float $weight, Gender $gender): float
+    public function calculateDailyCalories(float $weight, GenderEnum $gender): float
     {
         return match ($gender){
-            Gender::FEMALE => $weight * 24,
-            Gender::MALE => 1.1 * $weight * 24,
+            GenderEnum::FEMALE => $weight * 24,
+            GenderEnum::MALE => 1.1 * $weight * 24,
         };
     }
 }

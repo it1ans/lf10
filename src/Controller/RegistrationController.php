@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Enum\BodyType;
+use App\Enum\BodyTypeEnum;
 use App\Form\RegistrationFormType;
 use App\Security\AppAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
@@ -30,9 +30,7 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('app_home');
         }
         $user = new User();
-        $user->setBodyType(BodyType::NORMAL);
-        $user->setHeight(0);
-        $user->setAge(1);
+        $user->setBodyType(BodyTypeEnum::NORMAL);
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 

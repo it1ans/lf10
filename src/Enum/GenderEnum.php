@@ -2,8 +2,10 @@
 
 namespace App\Enum;
 
-enum Gender: string
+enum GenderEnum: string
 {
+    use LabelTrait;
+
     case FEMALE = 'female';
     case MALE = 'male';
 }
