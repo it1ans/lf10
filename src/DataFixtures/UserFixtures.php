@@ -3,8 +3,8 @@
 namespace App\DataFixtures;
 
 use App\Entity\User;
-use App\Enum\BodyType;
-use App\Enum\Gender;
+use App\Enum\BodyTypeEnum;
+use App\Enum\GenderEnum;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -24,9 +24,9 @@ class UserFixtures extends Fixture
         $user->setEmail('test@test.de');
         $user->setPassword($this->passwordHasher->hashPassword($user, 'test'));
         $user->setAge(24);
-        $user->setGender(Gender::MALE);
+        $user->setGender(GenderEnum::MALE);
         $user->setHeight(185);
-        $user->setBodyType(BodyType::NORMAL);
+        $user->setBodyType(BodyTypeEnum::NORMAL);
         $user->setName('Kalle Dude');
 
         $manager->persist($user);

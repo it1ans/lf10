@@ -2,8 +2,8 @@
 
 namespace App\Entity;
 
-use App\Enum\BodyType;
-use App\Enum\Gender;
+use App\Enum\BodyTypeEnum;
+use App\Enum\GenderEnum;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -31,8 +31,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column(type: 'string', enumType: BodyType::class)]
-    private ?BodyType $bodyType = null;
+    #[ORM\Column(type: 'string', enumType: BodyTypeEnum::class)]
+    private ?BodyTypeEnum $bodyType = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $height = null;
@@ -40,11 +40,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true)]
     private ?int $age = null;
 
-    #[ORM\Column(type: 'string', nullable: true, enumType: Gender::class)]
-    private ?Gender $gender = null;
+    #[ORM\Column(type: 'string', nullable: true, enumType: GenderEnum::class)]
+    private ?GenderEnum $gender = null;
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $weight = null;
 
     public function getId(): ?int
     {
@@ -135,12 +138,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getBodyType(): ?BodyType
+    public function getBodyType(): ?BodyTypeEnum
     {
         return $this->bodyType;
     }
 
-    public function setBodyType(?BodyType $bodyType): static
+    public function setBodyType(?BodyTypeEnum $bodyType): static
     {
         $this->bodyType = $bodyType;
 
@@ -171,12 +174,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getGender(): ?Gender
+    public function getGender(): ?GenderEnum
     {
         return $this->gender;
     }
 
-    public function setGender(?Gender $gender): static
+    public function setGender(?GenderEnum $gender): static
     {
         $this->gender = $gender;
 
@@ -191,6 +194,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setName(string $name): static
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getWeight(): ?float
+    {
+        return $this->weight;
+    }
+
+    public function setWeight(?float $weight): static
+    {
+        $this->weight = $weight;
 
         return $this;
     }

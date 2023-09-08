@@ -46,10 +46,10 @@
                 <p class="fw-bold">Ideal Weight</p>
               </div>
               <div>
-                <p>{{ app.user.age }}</p>
-                <p>{{ app.user.height }}</p>
+                <p>{{ app.user.age ?? "?" }}</p>
+                <p>{{ app.user.height ?? "?" }}</p>
                 <p>{{ app.user.bodyType.value|capitalize }}</p>
-                <p>{{ idealWeight }}kg</p>
+                <p>{{ idealWeight }}</p>
               </div>
             </div>
           </div>

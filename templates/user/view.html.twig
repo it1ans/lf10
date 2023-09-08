@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-xl-6 offset-xl-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="text-center">{{ user.name }}</h3>
+                        <hr>
+                        <div class="row">
+                            <div class="col fw-bold">Email</div>
+                            <div class="col">{{ user.email }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col fw-bold">Height</div>
+                            <div class="col">{{ user.height ?? 'Undefined' }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col fw-bold">Age</div>
+                            <div class="col">{{ user.age ?? 'Undefined' }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col fw-bold">Weight</div>
+                            <div class="col">{{ user.weight ?? 'Undefined' }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col fw-bold">Gender</div>
+                            <div class="col">{{ user.Gender ? user.Gender.value|capitalize : 'Undefined' }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
