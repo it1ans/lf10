@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Form\EditUserDataFormType;
-use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,6 +36,7 @@ class UserController extends AbstractController
     public function view(): Response
     {
         $user = $this->getUser();
+        assert($user instanceof User);
 
         return $this->render('user/view.html.twig', [
             'user' => $user
