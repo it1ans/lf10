@@ -1,137 +1,137 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-	Home | StayFit
+  Home | StayFit
 {% endblock %}
 
 {% block body %}
-	<div class="container mt-3">
-		<div class="row">
-			<div class="col">
-				<div class="card">
-					<div class="card-body">
-						<h3 class="text-center">{{ app.user.email }}</h3>
-						<hr/>
-						<div class="d-flex justify-content-evenly">
-							<div>
-								<p class="fw-bold">Daily need</p>
-								<p class="fw-bold">Current</p>
-								<p class="fw-bold">Remaining</p>
-							</div>
-							<div>
-								<p>NeededCalories-Value</p>
-								<p>CurrentCalories-Value</p>
-								<p>RemainingCalories-Value</p>
-							</div>
-						</div>
-						<div class="mt-2 input-group">
-							<button type="submit" class="btn btn-outline-secondary">Add</button>
-							<button type="submit" class="btn btn-outline-secondary">Remove</button>
-							<label for="text-input1"></label>
-							<input type="text" class="form-control" id="text-input1"/>
-							<span class="input-group-text">Cal.</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card">
-					<div class="card-body">
-						<h3 class="text-center">{{ app.user.name }}</h3>
-						<hr/>
-						<div class="d-flex justify-content-evenly">
-							<div>
-								<p>Age</p>
-								<p>Height</p>
-								<p>Body Type</p>
-								<p class="fw-bold">Ideal Weight</p>
-							</div>
-							<div>
-								<p>{{ app.user.age }}</p>
-								<p>{{ app.user.height }}</p>
-								<p>{{ app.user.bodyType.value|capitalize }}</p>
-								<p>{{ idealWeight }}kg</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="text-center">{{ app.user.email }}</h3>
+            <hr/>
+            <div class="d-flex justify-content-evenly">
+              <div>
+                <p class="fw-bold">Daily need</p>
+                <p class="fw-bold">Current</p>
+                <p class="fw-bold">Remaining</p>
+              </div>
+              <div>
+                <p>NeededCalories-Value</p>
+                <p>CurrentCalories-Value</p>
+                <p>RemainingCalories-Value</p>
+              </div>
+            </div>
+            <div class="mt-2 input-group">
+              <button type="submit" class="btn btn-outline-secondary">Add</button>
+              <button type="submit" class="btn btn-outline-secondary">Remove</button>
+              <label for="text-input1"></label>
+              <input type="text" class="form-control" id="text-input1"/>
+              <span class="input-group-text">Cal.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="text-center">{{ app.user.name }}</h3>
+            <hr/>
+            <div class="d-flex justify-content-evenly">
+              <div>
+                <p>Age</p>
+                <p>Height</p>
+                <p>Body Type</p>
+                <p class="fw-bold">Ideal Weight</p>
+              </div>
+              <div>
+                <p>{{ app.user.age }}</p>
+                <p>{{ app.user.height }}</p>
+                <p>{{ app.user.bodyType.value|capitalize }}</p>
+                <p>{{ idealWeight }}kg</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Recommended Recipes planned feature -->
-		<div class="row mt-4">
+    <div class="row mt-4">
 
-			<div class="col">
-				<div class="card">
-					<div class="card-body">
-						<p class="h4">Recommended Recipe 1</p>
-						<hr/>
-						<div class="d-flex justify-content-evenly">
-							<div>
-								<p>Calories</p>
-								<p>Type</p>
-								<p>Time</p>
-								<a class="nav-link fw-bold" href="#">To Recipe</a>
-							</div>
-							<div>
-							<p>Cal-Value</p>
-							<p>Recipe-Type</p>
-							<p>Recipe-Time</p>
-							</div>
-						</div>
-						<hr/>
-						<button class="btn btn-lg btn-primary">Eaten</button>
-					</div>
-				</div>
-			</div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <p class="h4">Recommended Recipe 1</p>
+            <hr/>
+            <div class="d-flex justify-content-evenly">
+              <div>
+                <p>Calories</p>
+                <p>Type</p>
+                <p>Time</p>
+                <a class="nav-link fw-bold" href="#">To Recipe</a>
+              </div>
+              <div>
+                <p>Cal-Value</p>
+                <p>Recipe-Type</p>
+                <p>Recipe-Time</p>
+              </div>
+            </div>
+            <hr/>
+            <button class="btn btn-lg btn-primary">Eaten</button>
+          </div>
+        </div>
+      </div>
 
-			<div class="col">
-				<div class="card">
-					<div class="card-body">
-						<p class="h4">Recommended Recipe 2</p>
-						<hr/>
-						<div class="d-flex justify-content-evenly">
-							<div>
-								<p>Calories</p>
-								<p>Type</p>
-								<p>Time</p>
-								<a class="nav-link fw-bold" href="#">To Recipe</a>
-							</div>
-							<div>
-							<p>Cal-Value</p>
-							<p>Recipe-Type</p>
-							<p>Recipe-Time</p>
-							</div>
-						</div>
-						<hr/>
-						<button class="btn btn-lg btn-primary">Eaten</button>
-					</div>
-				</div>
-			</div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <p class="h4">Recommended Recipe 2</p>
+            <hr/>
+            <div class="d-flex justify-content-evenly">
+              <div>
+                <p>Calories</p>
+                <p>Type</p>
+                <p>Time</p>
+                <a class="nav-link fw-bold" href="#">To Recipe</a>
+              </div>
+              <div>
+                <p>Cal-Value</p>
+                <p>Recipe-Type</p>
+                <p>Recipe-Time</p>
+              </div>
+            </div>
+            <hr/>
+            <button class="btn btn-lg btn-primary">Eaten</button>
+          </div>
+        </div>
+      </div>
 
-			<div class="col">
-				<div class="card">
-					<div class="card-body">
-						<p class="h4">Recommended Recipe 3</p>
-						<hr/>
-						<div class="d-flex justify-content-evenly">
-							<div>
-								<p>Calories</p>
-								<p>Type</p>
-								<p>Time</p>
-								<a class="nav-link fw-bold" href="#">To Recipe</a>
-							</div>
-							<div>
-							<p>Cal-Value</p>
-							<p>Recipe-Type</p>
-							<p>Recipe-Time</p>
-							</div>
-						</div>
-						<hr/>
-						<button class="btn btn-lg btn-primary">Eaten</button>
-					</div>
-				</div>
-			</div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <p class="h4">Recommended Recipe 3</p>
+            <hr/>
+            <div class="d-flex justify-content-evenly">
+              <div>
+                <p>Calories</p>
+                <p>Type</p>
+                <p>Time</p>
+                <a class="nav-link fw-bold" href="#">To Recipe</a>
+              </div>
+              <div>
+                <p>Cal-Value</p>
+                <p>Recipe-Type</p>
+                <p>Recipe-Time</p>
+              </div>
+            </div>
+            <hr/>
+            <button class="btn btn-lg btn-primary">Eaten</button>
+          </div>
+        </div>
+      </div>
 
-		</div>
-	</div>
+    </div>
+  </div>
 {% endblock %}
 
