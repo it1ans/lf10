@@ -10,22 +10,24 @@
         <div class="card">
           <div class="card-body">
             <h3 class="text-center">{{ app.user.email }}</h3>
-            <hr />
+            <hr/>
             <div class="d-flex justify-content-evenly">
               <div>
+                <p class="fw-bold">Daily need</p>
                 <p class="fw-bold">Current</p>
-                <p class="fw-bold">Current</p>
+                <p class="fw-bold">Remaining</p>
               </div>
               <div>
-                <p>3245</p>
-                <p>12</p>
+                <p>NeededCalories-Value</p>
+                <p>CurrentCalories-Value</p>
+                <p>RemainingCalories-Value</p>
               </div>
             </div>
             <div class="mt-2 input-group">
               <button type="submit" class="btn btn-outline-secondary">Add</button>
               <button type="submit" class="btn btn-outline-secondary">Remove</button>
               <label for="text-input1"></label>
-              <input type="text" class="form-control" id="text-input1" />
+              <input type="text" class="form-control" id="text-input1"/>
               <span class="input-group-text">Cal.</span>
             </div>
           </div>
@@ -35,7 +37,7 @@
         <div class="card">
           <div class="card-body">
             <h3 class="text-center">{{ app.user.name }}</h3>
-            <hr />
+            <hr/>
             <div class="d-flex justify-content-evenly">
               <div>
                 <p>Age</p>
@@ -54,5 +56,82 @@
         </div>
       </div>
     </div>
+    <!-- Recommended Recipes planned feature -->
+    <div class="row mt-4">
+
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <p class="h4">Recommended Recipe 1</p>
+            <hr/>
+            <div class="d-flex justify-content-evenly">
+              <div>
+                <p>Calories</p>
+                <p>Type</p>
+                <p>Time</p>
+                <a class="nav-link fw-bold" href="#">To Recipe</a>
+              </div>
+              <div>
+                <p>Cal-Value</p>
+                <p>Recipe-Type</p>
+                <p>Recipe-Time</p>
+              </div>
+            </div>
+            <hr/>
+            <button class="btn btn-lg btn-primary">Eaten</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <p class="h4">Recommended Recipe 2</p>
+            <hr/>
+            <div class="d-flex justify-content-evenly">
+              <div>
+                <p>Calories</p>
+                <p>Type</p>
+                <p>Time</p>
+                <a class="nav-link fw-bold" href="#">To Recipe</a>
+              </div>
+              <div>
+                <p>Cal-Value</p>
+                <p>Recipe-Type</p>
+                <p>Recipe-Time</p>
+              </div>
+            </div>
+            <hr/>
+            <button class="btn btn-lg btn-primary">Eaten</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <p class="h4">Recommended Recipe 3</p>
+            <hr/>
+            <div class="d-flex justify-content-evenly">
+              <div>
+                <p>Calories</p>
+                <p>Type</p>
+                <p>Time</p>
+                <a class="nav-link fw-bold" href="#">To Recipe</a>
+              </div>
+              <div>
+                <p>Cal-Value</p>
+                <p>Recipe-Type</p>
+                <p>Recipe-Time</p>
+              </div>
+            </div>
+            <hr/>
+            <button class="btn btn-lg btn-primary">Eaten</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 {% endblock %}
+
