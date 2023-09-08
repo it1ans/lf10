@@ -24,7 +24,11 @@ class HomeController extends AbstractController
         $user = $security->getUser();
         assert($user instanceof User);
 
-        $idealWeight = $weightCalculationService->calculateIdealWeight($user->getHeight(), $user->getAge(), $user->getBodyType());
+        if (!is_null($user->getHeight()) && !is_null($user->getAge())) {
+            $idealWeight = $weightCalculationService->calculateIdealWeight($user->getHeight(), $user->getAge(), $user->getBodyType()) . 'kg';
+        } else {
+            $idealWeight = 'Please add data in user settings';
+        }
 
         return $this->render('home/index.html.twig', [
             'idealWeight' => $idealWeight
