@@ -15,17 +15,19 @@
     {% endif %}
 
 <div class="d-flex justify-content-evenly mt-3">
-    <div>
-        <h1 class="h3 mb-3 font-weight-normal">Please log in</h1>
+    <div class="card" data-bs-theme="dark">
+        <div class ="card-body">
+            <h1 class="h3 mb-3 font-weight-normal">Please log in</h1>
 
-        <label for="inputEmail" class="mb-2">Email</label>
-        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control mb-3" autocomplete="email" required autofocus>
+            <label for="inputEmail" class="mb-2">Email</label>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control mb-3" autocomplete="email" required autofocus>
 
-        <label for="inputPassword" class="mb-2">Password</label>
-        <input type="password" name="password" id="inputPassword" class="form-control mb-3" autocomplete="current-password" required>
+            <label for="inputPassword" class="mb-2">Password</label>
+            <input type="password" name="password" id="inputPassword" class="form-control mb-3" autocomplete="current-password" required>
 
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-        <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
+        </div>
     </div>
 </div>
 
