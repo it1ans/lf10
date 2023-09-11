@@ -35,6 +35,8 @@ class UserController extends AbstractController
     #[Route('/user/view', name: 'app_user_view')]
     public function view(): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $user = $this->getUser();
         assert($user instanceof User);
 
