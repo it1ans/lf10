@@ -2,15 +2,81 @@
 
 {% block body %}
     <div class="container mt-3">
-        <div class="row">
-            <div class="col">
+        <div class="row mb-3">
+            <div class="col-md-6 mb-3">
                 <div class="card">
+                    <div class="card-body text-center">
+                        <div class="gradient-profile">
+                            <img src="{{ asset('img/download.png') }}" alt="User profile picture"
+                                 class="user-profile-image">
+                        </div>
+                        <h3>{{ user.name }}</h3>
+                        <p class="text-body-secondary">Account-Type: <strong>Administrator</strong></p>
+                    </div>
+                </div>
+                <div class="card mt-3">
                     <div class="card-body">
                         {{ form(form) }}
                     </div>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="text-center">{{ user.name }}</h3>
+                        <hr>
+                        <div class="row">
+                            <div class="col fw-bold">Email</div>
+                            <div class="col">{{ user.email }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col fw-bold">Height</div>
+                            <div class="col">{{ user.height ?? 'Undefined' }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col fw-bold">Age</div>
+                            <div class="col">{{ user.age ?? 'Undefined' }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col fw-bold">Weight</div>
+                            <div class="col">{{ user.weight ?? 'Undefined' }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col fw-bold">Gender</div>
+                            <div class="col">{{ user.Gender ? user.Gender.value|capitalize : 'Undefined' }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur porttitor diam nunc, quis
+                            mollis mauris accumsan id. Phasellus nec molestie ligula, a varius erat. Morbi vel est
+                            vestibulum risus vulputate condimentum sit amet a tellus. Donec congue cursus nunc. In
+                            dictum sapien nec nunc mollis eleifend. Nullam id nisl sed justo euismod posuere a eu leo.
+                            Sed sagittis porttitor diam. Donec vel turpis dolor. Morbi sit amet odio in ligula ornare
+                            bibendum ac non nisl. Morbi auctor, ex ut efficitur pulvinar, nibh felis tempus dui, vel
+                            pharetra turpis orci at libero. Nunc non faucibus orci, ut fermentum elit. Quisque volutpat
+                            auctor leo, et convallis nisi. Nullam egestas urna convallis lobortis luctus. Praesent
+                            interdum quam sed ipsum varius semper.</p>
+
+                        <p>In dolor arcu, sagittis et libero porttitor, tristique malesuada libero. Mauris iaculis
+                            viverra semper. Aliquam vel nisl ac tortor vehicula scelerisque. Aenean at luctus massa.
+                            Vestibulum viverra molestie arcu, ac mattis dui. Pellentesque tincidunt finibus mattis.
+                            Donec tellus urna, congue ac lorem eu, scelerisque venenatis tortor. Vestibulum convallis
+                            commodo odio, at euismod tortor porta non. Nam purus neque, ultricies eu rhoncus et,
+                            placerat quis tortor. Fusce feugiat massa non tortor pulvinar consectetur. Phasellus dolor
+                            velit, malesuada quis pharetra non, faucibus eget dui. </p>
+
+                        <p style="margin-bottom: 20px">In dolor arcu, sagittis et libero porttitor, tristique malesuada libero. Mauris iaculis
+                            viverra semper. Aliquam vel nisl ac tortor vehicula scelerisque. Aenean at luctus massa.
+                            Vestibulum viverra molestie arcu, ac mattis dui. Pellentesque tincidunt finibus mattis.
+                            Donec tellus urna, congue ac lorem eu, scelerisque venenatis tortor. Vestibulum convallis
+                            commodo odio, at euismod tortor porta non. Nam purus neque, ultricies eu rhoncus et,
+                            placerat quis tortor. Fusce feugiat massa non tortor pulvinar consectetur. Phasellus dolor
+                            velit, malesuada quis pharetra non, faucibus eget dui. </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
 {% endblock %}
