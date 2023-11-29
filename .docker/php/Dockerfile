@@ -1,6 +1,6 @@
 FROM php:8.1-fpm
 
-RUN apt update && apt install -y zlib1g-dev libpng-dev libicu-dev libzip-dev
+RUN apt update && apt install -y zlib1g-dev libpng-dev libicu-dev libzip-dev openssh-client
 RUN docker-php-ext-install \
     bcmath \
     gd \
