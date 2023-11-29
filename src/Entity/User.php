@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Enum\BodyTypeEnum;
 use App\Enum\GenderEnum;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -48,6 +50,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(nullable: true)]
     private ?float $weight = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Meal::class)]
+    private Collection $meals;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: EatenMeals::class)]
+    private Collection $eatenMeals;
+
+    public function __construct()
+    {
+        $this->meals = new ArrayCollection();
+        $this->eatenMeals = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -206,6 +220,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setWeight(?float $weight): static
     {
         $this->weight = $weight;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Meal>
+     */
+    public function getMeals(): Collection
+    {
+        return $this->meals;
+    }
+
+    public function addMeal(Meal $meal): static
+    {
+        if (!$this->meals->contains($meal)) {
+            $this->meals->add($meal);
+            $meal->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMeal(Meal $meal): static
+    {
+        if ($this->meals->removeElement($meal)) {
+            // set the owning side to null (unless already changed)
+            if ($meal->getUser() === $this) {
+                $meal->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, EatenMeals>
+     */
+    public function getEatenMeals(): Collection
+    {
+        return $this->eatenMeals;
+    }
+
+    public function addEatenMeal(EatenMeals $eatenMeal): static
+    {
+        if (!$this->eatenMeals->contains($eatenMeal)) {
+            $this->eatenMeals->add($eatenMeal);
+            $eatenMeal->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEatenMeal(EatenMeals $eatenMeal): static
+    {
+        if ($this->eatenMeals->removeElement($eatenMeal)) {
+            // set the owning side to null (unless already changed)
+            if ($eatenMeal->getUser() === $this) {
+                $eatenMeal->setUser(null);
+            }
+        }
 
         return $this;
     }
