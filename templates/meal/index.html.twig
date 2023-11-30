@@ -30,8 +30,8 @@
 										<td>{{ meal.calories }}</td>
 										<td>{{ meal.public ? 'Yes' : 'No' }}</td>
 										<td>
-											<a href="{{ path('app_meal_show', {'id': meal.id}) }}" class="btn btn-outline-primary">show</a>
-											<a href="{{ path('app_meal_edit', {'id': meal.id}) }}" class="btn btn-outline-primary">edit</a>
+											<a href="{{ path('app_meal_show', {'id': meal.id}) }}" class="btn btn-outline-secondary">show</a>
+											<a href="{{ path('app_meal_edit', {'id': meal.id}) }}" class="btn btn-outline-secondary">edit</a>
 										</td>
 									</tr>
 								{% else %}
@@ -42,12 +42,10 @@
 							</tbody>
 						</table>
 
-						<a href="{{ path('app_meal_new') }}">Create new</a>
+						<a href="{{ path('app_meal_new') }}" class="btn btn-outline-primary">Create new</a>
 					</div>
 				</div>
 			</div>
-			<div></div>
 		</div>
 	</div>
 {% endblock %}
-<div id="test" class=""></div>

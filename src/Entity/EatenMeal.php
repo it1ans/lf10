@@ -2,22 +2,25 @@
 
 namespace App\Entity;
 
-use App\Repository\EatenMealsRepository;
+use App\Repository\EatenMealRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: EatenMealsRepository::class)]
-class EatenMeals
+#[ORM\Entity(repositoryClass: EatenMealRepository::class)]
+class EatenMeal
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'eatenMeals')]
+    #[ORM\ManyToOne(inversedBy: 'eatenMeal')]
     private ?User $user = null;
 
-    #[ORM\ManyToOne(inversedBy: 'eatenMeals')]
+    #[ORM\ManyToOne(inversedBy: 'eatenMeal')]
     private ?Meal $meal = null;
+
+    #[ORM\Column]
+    private ?\DateTimeImmutable $createdAt = null;
 
     public function getId(): ?int
     {
@@ -44,6 +47,18 @@ class EatenMeals
     public function setMeal(?Meal $meal): static
     {
         $this->meal = $meal;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

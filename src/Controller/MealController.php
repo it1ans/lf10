@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\EatenMeal;
 use App\Entity\Meal;
+use App\Form\EatenMealType;
 use App\Form\MealType;
 use App\Repository\MealRepository;
 use Doctrine\ORM\EntityManagerInterface;
