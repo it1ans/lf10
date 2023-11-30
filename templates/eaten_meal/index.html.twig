@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Eaten Meals{% endblock %}
+
+{% block body %}
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">name</th>
+                                <th scope="col">calories</th>
+                                <th scope="col">username</th>
+                                <th scope="col">created at</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for meal in meals %}
+                                <tr>
+                                    <td>{{ meal.id }}</td>
+                                    <td>{{ meal.meal.name }}</td>
+                                    <td>{{ meal.meal.calories }}</td>
+                                    <td>{{ meal.user.name }}</td>
+                                    <td>{{ meal.createdAt|date('d.m.Y') }}</td>
+                                    <td><a href="{{ path('app_eatenMeal_delete', {'id': meal.id}) }}" class="btn btn-outline-danger">Delete</a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <div class="d-grid gap-2">
+                            <a href="{{ path('app_eatenMeal_add') }}" class="btn btn-outline-primary">Add meal</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

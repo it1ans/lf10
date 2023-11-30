@@ -27,12 +27,12 @@ class Meal
     #[ORM\ManyToOne(inversedBy: 'meals')]
     private ?User $user = null;
 
-    #[ORM\OneToMany(mappedBy: 'meal', targetEntity: EatenMeals::class)]
-    private Collection $eatenMeals;
+    #[ORM\OneToMany(mappedBy: 'meal', targetEntity: EatenMeal::class)]
+    private Collection $eatenMeal;
 
     public function __construct()
     {
-        $this->eatenMeals = new ArrayCollection();
+        $this->eatenMeal = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -89,26 +89,26 @@ class Meal
     }
 
     /**
-     * @return Collection<int, EatenMeals>
+     * @return Collection<int, EatenMeal>
      */
-    public function getEatenMeals(): Collection
+    public function getEatenMeal(): Collection
     {
-        return $this->eatenMeals;
+        return $this->eatenMeal;
     }
 
-    public function addEatenMeal(EatenMeals $eatenMeal): static
+    public function addEatenMeal(EatenMeal $eatenMeal): static
     {
-        if (!$this->eatenMeals->contains($eatenMeal)) {
-            $this->eatenMeals->add($eatenMeal);
+        if (!$this->eatenMeal->contains($eatenMeal)) {
+            $this->eatenMeal->add($eatenMeal);
             $eatenMeal->setMeal($this);
         }
 
         return $this;
     }
 
-    public function removeEatenMeal(EatenMeals $eatenMeal): static
+    public function removeEatenMeal(EatenMeal $eatenMeal): static
     {
-        if ($this->eatenMeals->removeElement($eatenMeal)) {
+        if ($this->eatenMeal->removeElement($eatenMeal)) {
             // set the owning side to null (unless already changed)
             if ($eatenMeal->getMeal() === $this) {
                 $eatenMeal->setMeal(null);

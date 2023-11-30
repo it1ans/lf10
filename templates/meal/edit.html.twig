@@ -3,11 +3,20 @@
 {% block title %}Edit Meal{% endblock %}
 
 {% block body %}
-    <h1>Edit Meal</h1>
+<div class="container mt-3">
+  <div class="row">
+    <div class="card">
+      <div class="card-body">
 
-    {{ include('meal/_form.html.twig', {'button_label': 'Update'}) }}
+      <h1>Edit Meal</h1>
 
-    <a href="{{ path('app_meal_index') }}">back to list</a>
+      {{ form(form) }}
 
-    {{ include('meal/_delete_form.html.twig') }}
+      <a href="{{ path('app_meal_index') }}" class="btn btn-outline-secondary">back to list</a>
+
+      {{ include('meal/_delete_form.html.twig') }}
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

@@ -54,13 +54,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Meal::class)]
     private Collection $meals;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: EatenMeals::class)]
-    private Collection $eatenMeals;
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: EatenMeal::class)]
+    private Collection $eatenMeal;
 
     public function __construct()
     {
         $this->meals = new ArrayCollection();
-        $this->eatenMeals = new ArrayCollection();
+        $this->eatenMeal = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -255,26 +255,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, EatenMeals>
+     * @return Collection<int, EatenMeal>
      */
-    public function getEatenMeals(): Collection
+    public function getEatenMeal(): Collection
     {
-        return $this->eatenMeals;
+        return $this->eatenMeal;
     }
 
-    public function addEatenMeal(EatenMeals $eatenMeal): static
+    public function addEatenMeal(EatenMeal $eatenMeal): static
     {
-        if (!$this->eatenMeals->contains($eatenMeal)) {
-            $this->eatenMeals->add($eatenMeal);
+        if (!$this->eatenMeal->contains($eatenMeal)) {
+            $this->eatenMeal->add($eatenMeal);
             $eatenMeal->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeEatenMeal(EatenMeals $eatenMeal): static
+    public function removeEatenMeal(EatenMeal $eatenMeal): static
     {
-        if ($this->eatenMeals->removeElement($eatenMeal)) {
+        if ($this->eatenMeal->removeElement($eatenMeal)) {
             // set the owning side to null (unless already changed)
             if ($eatenMeal->getUser() === $this) {
                 $eatenMeal->setUser(null);
