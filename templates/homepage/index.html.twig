@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+  Home | StayFit
+{% endblock %}
+{% block body %}
+
+        <main class="flex-shrink-0">
+            <section class="py-5">
+                <div class="container px-5">
+
+                    <div class="card border-0 shadow rounded-3 overflow-hidden">
+                        <div class="card-body p-0">
+                            <div class="row gx-0">
+                                <div class="col-lg-6 col-xl-5 py-lg-5">
+                                    <div class="p-4 p-md-5">
+                                        <div class="h2 fw-bolder">Unsere Vision</div>
+                                        <p>Wir von MyFit haben es uns zum Ziel gesetzt euch dabei zu Unterstützen euren Traumkörper zu erreichen! MyFit ist unser mittel euch eine leicht Zugängliche Möglichkeit zu bieten euren Lifestyle gesund und auf die Zukunft gerichtet anzupassen. Ihr habt nur einen Körper also worauf wartet ihr  tut ihm gutes und Regestriert euch jetzt kostenlos!</p>
+                                        <a class="order-3 m-1 btn btn-outline-secondary" type="button" href="{{ path('app_register') }}">Register</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-xl-7"><div class="bg-featured-blog" style="background-image: url('https://dummyimage.com/700x350/343a40/6c757d')"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="py-5 bg-light">
+                <div class="container px-5">
+                    <div class="row gx-5">
+                        <div class="col-xl-8">
+                            <h2 class="fw-bolder fs-5 mb-4">Reviews</h2>
+                            <div class="mb-4">
+                                <div class="small text-muted">May 12, 2023</div>
+                                <a class="link-dark" href="#!"><h3>MyFit starke Leistungen zu starken Konditionen!</h3></a>
+                            </div>
+
+                            <div class="mb-4">
+                                <div class="small text-muted">May 5, 2023</div>
+                                <a class="link-dark" href="#!"><h3>MyFit: Lohnt sich die neu App zum Abnehmen?</h3></a>
+                            </div>
+
+                            <div class="mb-4">
+                                <div class="small text-muted">Apr 21, 2023</div>
+                                <a class="link-dark" href="#!"><h3>MyFit im Vergleich</h3></a>
+                            </div>
+                            
+                            <div class="text-end mb-5 mb-xl-0">
+                                <a class="text-decoration-none" href="#!">
+                                    More Reviews
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="py-5">
+                <div class="container px-5">
+                    <h2 class="fw-bolder fs-5 mb-4">Partner</h2>
+                    <div class="row gx-5">
+                        <div class="col-lg-4 mb-5">
+                            <div class="card h-100 shadow border-0">
+                                <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
+                                <div class="card-body p-4">
+                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Zum Werbepartner</div>
+                                    <a class="text-decoration-none link-dark stretched-link" href="#!"><div class="h5 card-title mb-3">Fitnesstudio XYZ</div></a>
+                                    <p class="card-text mb-0">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-5">
+                            <div class="card h-100 shadow border-0">
+                                <img class="card-img-top" src="https://dummyimage.com/600x350/adb5bd/495057" alt="..." />
+                                <div class="card-body p-4">
+                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Zum Werbepartner</div>
+                                    <a class="text-decoration-none link-dark stretched-link" href="#!"><div class="h5 card-title mb-3">Fitness Supplements</div></a>
+                                    <p class="card-text mb-0">This text is a bit longer to illustrate the adaptive height of each card. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-5">
+                            <div class="card h-100 shadow border-0">
+                                <img class="card-img-top" src="https://dummyimage.com/600x350/6c757d/343a40" alt="..." />
+                                <div class="card-body p-4">
+                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Zum Werbepartner</div>
+                                    <a class="text-decoration-none link-dark stretched-link" href="#!"><div class="h5 card-title mb-3">Fitness Meister</div></a>
+                                    <p class="card-text mb-0">Some more quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-dark py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; StayFit 2023</div></div>
+                    <div class="col-auto">
+                        <a class="link-light small" href="#!">Privacy</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="#!">Terms</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="#!">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+{% endblock %}

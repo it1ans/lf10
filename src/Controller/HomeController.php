@@ -18,7 +18,7 @@ class HomeController extends AbstractController
     ): Response
     {
         if (!$security->isGranted('IS_AUTHENTICATED_FULLY')) {
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_homepage');
         }
 
         $user = $security->getUser();

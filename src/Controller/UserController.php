@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 class UserController extends AbstractController
 {
@@ -34,9 +35,11 @@ class UserController extends AbstractController
     }
 
     #[Route('/user/view', name: 'app_user_view')]
-    public function view(): Response
+    public function view(Security $security): Response
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        if (!$security->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirectToRoute('app_homepage');
+        }
 
         $user = $this->getUser();
         assert($user instanceof User);
