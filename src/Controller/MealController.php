@@ -9,9 +9,13 @@ use App\Form\MealType;
 use App\Repository\MealRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/meal')]
 class MealController extends AbstractController
@@ -25,13 +29,34 @@ class MealController extends AbstractController
     }
 
     #[Route('/new', name: 'app_meal_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $meal = new Meal();
         $form = $this->createForm(MealType::class, $meal);
+        /** @var FormInterface $form */
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $imageFile */
+            $imageFile = $form->get('image')->getData();
+
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('meal_image_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                $meal->setImageFilename($newFilename);
+            }
+
             $entityManager->persist($meal);
             $entityManager->flush();
 
@@ -70,13 +95,11 @@ class MealController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_meal_delete', methods: ['POST'])]
+    #[Route('/delete/{id}', name: 'app_meal_delete')]
     public function delete(Request $request, Meal $meal, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$meal->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($meal);
-            $entityManager->flush();
-        }
+        $entityManager->remove($meal);
+        $entityManager->flush();
 
         return $this->redirectToRoute('app_meal_index', [], Response::HTTP_SEE_OTHER);
     }

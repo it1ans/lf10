@@ -4,48 +4,58 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container mt-3">
-		<div class="row">
-			<div class="col">
-				<div class="card">
-					<div class="card-body">
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col">
+                <div class="card mb-3 shadow">
+                    <div class="card-body">
 
-						<h1>Meal index</h1>
+                        <div class="row">
+                            <div class="col-md-4 offset-md-4">
+                                <h3 class="text-center">Meals</h3>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="{{ path('app_meal_new') }}"
+                                   class="btn btn-outline-primary float-end d-none d-md-block">Create new</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-						<table class="table">
-							<thead>
-								<tr>
-									<th>Id</th>
-									<th>Name</th>
-									<th>Calories</th>
-									<th>Public</th>
-									<th>actions</th>
-								</tr>
-							</thead>
-							<tbody>
-								{% for meal in meals %}
-									<tr>
-										<td>{{ meal.id }}</td>
-										<td>{{ meal.name }}</td>
-										<td>{{ meal.calories }}</td>
-										<td>{{ meal.public ? 'Yes' : 'No' }}</td>
-										<td>
-											<a href="{{ path('app_meal_show', {'id': meal.id}) }}" class="btn btn-outline-secondary">show</a>
-											<a href="{{ path('app_meal_edit', {'id': meal.id}) }}" class="btn btn-outline-secondary">edit</a>
-										</td>
-									</tr>
-								{% else %}
-									<tr>
-										<td colspan="5">no records found</td>
-									</tr>
-								{% endfor %}
-							</tbody>
-						</table>
+                <div class="d-grid mb-2 d-block d-md-none">
+                    <a href="{{ path('app_meal_new') }}" class="btn btn-primary shadow">Create new</a>
+                </div>
 
-						<a href="{{ path('app_meal_new') }}" class="btn btn-outline-primary">Create new</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                <div class="row pt-2">
+                    {% for meal in meals %}
+                        <div class="col-xl-3 col-md-6 mb-3">
+                            <div class="card shadow">
+                                <img src="{{ asset('uploads/meals/' ~ meal.imageFilename) }}"
+                                     class="card-img-top meal-image" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ meal.name }}
+                                        {% if meal.public %}
+                                            <span class="badge text-bg-success float-end">Public</span>
+                                        {% else %}
+                                            <span class="badge text-bg-danger float-end">Private</span>
+                                        {% endif %}
+                                    </h5>
+
+                                    <p class="card-text">Calories: {{ meal.calories }}</p>
+                                    <p class="card-text">from: {{ meal.user.name }}</p>
+                                    <div class="btn-group btn-group-lg d-flex" role="group"
+                                         aria-label="Large button group">
+                                        <a href="{{ path('app_meal_show', {'id': meal.id}) }}"
+                                           class="btn btn-outline-primary">Show</a>
+                                        <a href="{{ path('app_meal_delete', {'id': meal.id}) }}"
+                                           class="btn btn-outline-danger">Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
