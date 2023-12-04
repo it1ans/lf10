@@ -30,6 +30,9 @@ class Meal
     #[ORM\OneToMany(mappedBy: 'meal', targetEntity: EatenMeal::class)]
     private Collection $eatenMeal;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $imageFilename = null;
+
     public function __construct()
     {
         $this->eatenMeal = new ArrayCollection();
@@ -114,6 +117,18 @@ class Meal
                 $eatenMeal->setMeal(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImageFilename(): ?string
+    {
+        return $this->imageFilename;
+    }
+
+    public function setImageFilename(?string $imageFilename): static
+    {
+        $this->imageFilename = $imageFilename;
 
         return $this;
     }

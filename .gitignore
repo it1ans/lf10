@@ -1,4 +1,5 @@
 /.idea/
+public/uploads/meals
 
 ###> symfony/framework-bundle ###
 /.env.local
