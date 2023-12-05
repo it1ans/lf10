@@ -35,8 +35,8 @@
                        aria-current="page" href="{{ path('app_home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ app.request.attributes.get("_route") == 'app_user_view' ? 'active' }}"
-                       href="{{ path('app_user_view') }}">Profile</a>
+                    <a class="nav-link {{ app.request.attributes.get("_route") == 'app_user_edit' ? 'active' }}"
+                       href="{{ path('app_user_edit') }}">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ app.request.attributes.get("_route") == 'app_faq' ? 'active' }}"
@@ -82,8 +82,8 @@
                    aria-current="page" href="{{ path('app_home') }}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ app.request.attributes.get("_route") == 'app_user_view' ? 'active' }}"
-                   href="{{ path('app_user_view') }}">Profile</a>
+                <a class="nav-link {{ app.request.attributes.get("_route") == 'app_user_edit' ? 'active' }}"
+                   href="{{ path('app_user_edit') }}">Profile</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ app.request.attributes.get("_route") == 'app_faq' ? 'active' }}"
@@ -112,7 +112,20 @@
 </div>
 
 {% for message in app.flashes('success') %}
-    <div class="alert alert-success" role="alert">{{ message }}</div>
+    <div class="container">
+        <div class="alert alert-success mt-3 alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+{% endfor %}
+{% for message in app.flashes('danger') %}
+    <div class="container">
+        <div class="alert alert-danger mt-3 alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
 {% endfor %}
 
 {% block body %}
