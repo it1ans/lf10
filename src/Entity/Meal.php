@@ -27,7 +27,7 @@ class Meal
     #[ORM\ManyToOne(inversedBy: 'meals')]
     private ?User $user = null;
 
-    #[ORM\OneToMany(mappedBy: 'meal', targetEntity: EatenMeal::class)]
+    #[ORM\OneToMany(mappedBy: 'meal', targetEntity: EatenMeal::class, orphanRemoval: true)]
     private Collection $eatenMeal;
 
     #[ORM\Column(length: 255, nullable: true)]

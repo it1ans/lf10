@@ -12,10 +12,10 @@
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">name</th>
-                                <th scope="col">calories</th>
-                                <th scope="col">username</th>
-                                <th scope="col">created at</th>
+                                <th scope="col">{{ 'page.eatenMeal.name'|trans({}, 'page') }}</th>
+                                <th scope="col">{{ 'page.eatenMeal.calories'|trans({}, 'page') }}</th>
+                                <th scope="col">{{ 'page.eatenMeal.username'|trans({}, 'page') }}</th>
+                                <th scope="col">{{ 'page.eatenMeal.createdAt'|trans({}, 'page') }}</th>
                                 <th scope="col"></th>
                             </tr>
                             </thead>
@@ -27,7 +27,11 @@
                                     <td>{{ meal.meal.calories }}</td>
                                     <td>{{ meal.user.name }}</td>
                                     <td>{{ meal.createdAt|date('d.m.Y') }}</td>
-                                    <td><a href="{{ path('app_eatenMeal_delete', {'id': meal.id}) }}" class="btn btn-outline-danger">Delete</a></td>
+                                    <td>
+                                        <button class="btn btn-outline-danger" data-bs-target="#Modal{{ meal.id }}"
+                                                data-bs-toggle="modal">Delete
+                                        </button>
+                                    </td>
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -40,4 +44,16 @@
             </div>
         </div>
     </div>
+
+
+    {% for eatenMeal in meals %}
+        {% include 'form/modal/delete.html.twig' with {
+            id: eatenMeal.id,
+            headline: 'modal.eatenMeal.delete.headline'|trans({}, 'modals'),
+            text: 'modal.eatenMeal.delete.text'|trans({'%mealName%': eatenMeal.meal.name }, 'modals'),
+            confirmButtonText: 'modal.eatenMeal.delete.confirm'|trans({}, 'modals'),
+            closeText: 'modal.eatenMeal.delete.close'|trans({}, 'modals'),
+            confirmUrl: path('app_eatenMeal_delete', {id: eatenMeal.id})
+        } %}
+    {% endfor %}
 {% endblock %}

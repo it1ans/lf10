@@ -1,0 +1,32 @@
+{% set transToken = 'modal.confirmDeletionModal.' ~ type|default('default') %}
+
+<div class="modal inmodal fade"
+     id="Modal{{ id }}"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="{{ id }}ModalTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" role="document">
+            <div class="modal-header">
+                <h4 class="modal-title text-danger" id="{{ id }}ModalTitle">
+                    {{ headline }}
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="text-center text-dark font-bold">
+                    {{ text }}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-secondary"
+                        data-bs-dismiss="modal">
+                    {{ closeText }}
+                </button>
+                <a href="{{ confirmUrl is defined ? confirmUrl : '' }}" class="btn btn-success">
+                    {{ confirmButtonText }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

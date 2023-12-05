@@ -1,0 +1,13 @@
+modal:
+  meal:
+    delete:
+      headline: 'Delete'
+      text: 'Be careful when deleting %mealName%. All eaten meals containing this meal will be deleted as well'
+      confirm: 'Confirm'
+      close: 'Cancel'
+  eatenMeal:
+    delete:
+      headline: 'Delete'
+      text: 'Do you really want to delete %mealName%?'
+      confirm: 'Yes'
+      close: 'No'
