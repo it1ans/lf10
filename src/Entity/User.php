@@ -24,6 +24,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
+    /**
+     * @var string[]
+     */
     #[ORM\Column]
     private array $roles = [];
 
@@ -51,9 +54,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true)]
     private ?float $weight = null;
 
+    /**
+     * @var ArrayCollection<int, Meal>
+     */
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Meal::class)]
     private Collection $meals;
 
+    /**
+     * @var ArrayCollection<int, EatenMeal>
+     */
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: EatenMeal::class)]
     private Collection $eatenMeal;
 
@@ -110,6 +119,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return array_unique($roles);
     }
 
+    /**
+     * @param string[] $roles
+     * @return $this
+     */
     public function setRoles(array $roles): static
     {
         $this->roles = $roles;

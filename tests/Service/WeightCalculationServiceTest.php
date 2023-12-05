@@ -9,6 +9,9 @@ use PHPUnit\Framework\TestCase;
 
 class WeightCalculationServiceTest extends TestCase
 {
+    /**
+     * @return array<int, array<mixed>>
+     */
     public static function idealWeightProvider(): array
     {
         return [
