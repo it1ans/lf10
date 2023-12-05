@@ -22,6 +22,10 @@ class EatenMealRepository extends ServiceEntityRepository
         parent::__construct($registry, EatenMeal::class);
     }
 
+    /**
+     * @param UserInterface $user
+     * @return EatenMeal[]
+     */
     public function findByUser(UserInterface $user): array
     {
         return $this->createQueryBuilder('eaten_meal')

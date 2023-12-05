@@ -27,6 +27,9 @@ class Meal
     #[ORM\ManyToOne(inversedBy: 'meals')]
     private ?User $user = null;
 
+    /**
+     * @var ArrayCollection<int, EatenMeal>
+     */
     #[ORM\OneToMany(mappedBy: 'meal', targetEntity: EatenMeal::class, orphanRemoval: true)]
     private Collection $eatenMeal;
 

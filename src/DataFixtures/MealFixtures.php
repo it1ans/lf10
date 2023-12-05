@@ -10,12 +10,12 @@ use Symfony\Component\Asset\Packages;
 
 class MealFixtures extends Fixture implements DependentFixtureInterface
 {
-    public function __construct(private Packages $packages)
+    public function __construct(private readonly Packages $packages)
     {
     }
 
 
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         $meals = [
             [
@@ -60,7 +60,7 @@ class MealFixtures extends Fixture implements DependentFixtureInterface
         $manager->flush();
     }
 
-    public function getDependencies()
+    public function getDependencies(): array
     {
         return [
             UserFixtures::class,

@@ -23,6 +23,10 @@ class MealRepository extends ServiceEntityRepository
         parent::__construct($registry, Meal::class);
     }
 
+    /**
+     * @param UserInterface $user
+     * @return Meal[]
+     */
     public function findPublicOrOwn(UserInterface $user): array
     {
         return $this->findPublicOrOwnQueryBuilder($user)->getQuery()->getResult();
@@ -36,6 +40,10 @@ class MealRepository extends ServiceEntityRepository
             ->setParameter('val', $user);
     }
 
+    /**
+     * @param UserInterface $user
+     * @return Meal[]
+     */
     public function findOwnMeals(UserInterface $user): array
     {
         return $this->createQueryBuilder('meal')

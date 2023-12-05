@@ -44,30 +44,12 @@ class MealController extends AbstractController
     {
         $meal = new Meal();
         $form = $this->createForm(MealType::class, $meal);
-        /** @var FormInterface $form */
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var UploadedFile $imageFile */
-            $imageFile = $form->get('image')->getData();
+            $this->saveImageFilename($form, $slugger, $meal);
 
-            if ($imageFile) {
-                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
-
-                try {
-                    $imageFile->move(
-                        $this->getParameter('meal_image_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
-                }
-
-                $meal->setImageFilename($newFilename);
-            }
-
+            assert($this->getUser() instanceof User);
             $meal->setUser($this->getUser());
 
             $entityManager->persist($meal);
@@ -102,30 +84,10 @@ class MealController extends AbstractController
         }
 
         $form = $this->createForm(MealType::class, $meal);
-        /** @var FormInterface $form */
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var UploadedFile $imageFile */
-            $imageFile = $form->get('image')->getData();
-
-            if ($imageFile) {
-                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
-
-
-                try {
-                    $imageFile->move(
-                        $this->getParameter('meal_image_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
-                }
-
-                $meal->setImageFilename($newFilename);
-            }
+            $this->saveImageFilename($form, $slugger, $meal);
 
             $entityManager->persist($meal);
             $entityManager->flush();
@@ -155,5 +117,33 @@ class MealController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('app_meal_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    /**
+     * @param FormInterface $form
+     * @param SluggerInterface $slugger
+     * @param Meal $meal
+     * @return void
+     */
+    public function saveImageFilename(FormInterface $form, SluggerInterface $slugger, Meal $meal): void
+    {
+        $imageFile = $form->get('image')->getData();
+
+        if ($imageFile) {
+            $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+            $safeFilename = $slugger->slug($originalFilename);
+            $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+
+            try {
+                $imageFile->move(
+                    $this->getParameter('meal_image_directory'),
+                    $newFilename
+                );
+            } catch (FileException $e) {
+                // ... handle exception if something happens during file upload
+            }
+
+            $meal->setImageFilename($newFilename);
+        }
     }
 }

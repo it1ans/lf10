@@ -34,5 +34,5 @@
         "editor.defaultFormatter": "junstyle.php-cs-fixer",
         "editor.formatOnSave": true
     },
-    "emmet.includeLanguages": { "twig": "html" },
+    "emmet.includeLanguages": { "twig": "html" }
 }
