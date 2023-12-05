@@ -1,0 +1,6 @@
+page:
+  eatenMeal:
+    name: 'Name'
+    calories: 'Calories'
+    username: 'Username'
+    createdAt: 'Created at'
