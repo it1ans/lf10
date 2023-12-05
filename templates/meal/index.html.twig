@@ -26,11 +26,20 @@
                     <a href="{{ path('app_meal_new') }}" class="btn btn-primary shadow">Create new</a>
                 </div>
 
+                <div class="card mb-3 shadow">
+                    <div class="card-body">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" onclick="window.location.href = '{{ path('app_meal_index', {'ownMeals': ownMealsOnly|replace({'true':'false', 'false':'true'}) }) }}'" type="checkbox" role="switch" id="flexSwitchCheckChecked" {{ ownMealsOnly == 'true' ? 'checked' }}>
+                            <label class="form-check-label" for="flexSwitchCheckChecked">Show own meals only</label>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row pt-2">
                     {% for meal in meals %}
                         <div class="col-xl-3 col-md-6 mb-3">
                             <div class="card shadow">
-                                <img src="{{ asset('uploads/meals/' ~ meal.imageFilename) }}"
+                                <img src="{% if meal.imageFilename %}{{ asset('uploads/meals/' ~ meal.imageFilename) }}{% else %}{{ asset('build/../uploads/meals/notfound.jpg') }}{% endif %}"
                                      class="card-img-top meal-image" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ meal.name }}
@@ -42,13 +51,15 @@
                                     </h5>
 
                                     <p class="card-text">Calories: {{ meal.calories }}</p>
-                                    <p class="card-text">from: {{ meal.user.name }}</p>
+                                    <p class="card-text">{{ not meal.public ? 'from: ' ~ meal.user.name : 'Global Meal' }}</p>
                                     <div class="btn-group btn-group-lg d-flex" role="group"
                                          aria-label="Large button group">
                                         <a href="{{ path('app_meal_show', {'id': meal.id}) }}"
                                            class="btn btn-outline-primary">Show</a>
-                                        <a href="{{ path('app_meal_delete', {'id': meal.id}) }}"
-                                           class="btn btn-outline-danger">Remove</a>
+                                        {% if meal.user.id == app.user.id %}
+                                            <a href="{{ path('app_meal_delete', {'id': meal.id}) }}"
+                                               class="btn btn-outline-danger">Remove</a>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>

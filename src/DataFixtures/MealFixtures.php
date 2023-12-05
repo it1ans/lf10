@@ -40,7 +40,7 @@ class MealFixtures extends Fixture implements DependentFixtureInterface
                 'name' => 'Cheeseburger',
                 'calories' => 1200,
                 'imageFilename' => 'cheeseburger.jpg',
-                'public' => true,
+                'public' => false,
             ],
         ];
 
@@ -57,7 +57,6 @@ class MealFixtures extends Fixture implements DependentFixtureInterface
             $manager->persist($meal);
         }
 
-        $manager->persist($meal);
         $manager->flush();
     }
 

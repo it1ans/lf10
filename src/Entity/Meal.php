@@ -36,6 +36,7 @@ class Meal
     public function __construct()
     {
         $this->eatenMeal = new ArrayCollection();
+        $this->setPublic(false);
     }
 
     public function getId(): ?int

@@ -3,9 +3,17 @@
 {% block title %}New Meal{% endblock %}
 
 {% block body %}
-    <h1>Create new Meal</h1>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h1>Create new Meal</h1>
 
-    {{ include('meal/_form.html.twig') }}
+                    {{ form(form) }}
 
-    <a href="{{ path('app_meal_index') }}">back to list</a>
+                    <a href="{{ path('app_meal_index') }}" class="btn btn-secondary">Back to list</a>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

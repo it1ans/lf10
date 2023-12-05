@@ -22,11 +22,11 @@ class MealType extends AbstractType
         $builder
             ->add('name', TextType::class)
             ->add('calories', NumberType::class)
-            ->add('public', CheckboxType::class)
-            ->add('user', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'name',
-            ])
+//            ->add('public', CheckboxType::class)
+//            ->add('user', EntityType::class, [
+//                'class' => User::class,
+//                'choice_label' => 'name',
+//            ])
             ->add('image', FileType::class, [
                 'label' => 'Image (img file)',
                 'mapped' => false,

@@ -2,15 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Form\EditUserDataType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Security;
-use Symfony\Component\Translation\TranslatableMessage;
 
 class UserController extends AbstractController
 {
@@ -34,21 +31,6 @@ class UserController extends AbstractController
         return $this->renderForm('user/edit.html.twig', [
             'form' => $form,
             'user' => $user,
-        ]);
-    }
-
-    #[Route('/user/view', name: 'app_user_view')]
-    public function view(Security $security): Response
-    {
-        if (!$security->isGranted('IS_AUTHENTICATED_FULLY')) {
-            return $this->redirectToRoute('app_homepage');
-        }
-
-        $user = $this->getUser();
-        assert($user instanceof User);
-
-        return $this->render('user/view.html.twig', [
-            'user' => $user
         ]);
     }
 }
