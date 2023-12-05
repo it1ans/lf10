@@ -27,12 +27,12 @@
                 aria-controls="offcanvasExample" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="{{ path('app_home') }}">StayFit</a>
+        <a class="navbar-brand" href="{{ path('app_dashboard') }}">StayFit</a>
         <div class="collapse navbar-collapse justify-content-between" id="navbarTogglerDemo01">
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link {{ app.request.attributes.get("_route") == 'app_home' ? 'active' }}"
-                       aria-current="page" href="{{ path('app_home') }}">Home</a>
+                    <a class="nav-link {{ app.request.attributes.get("_route") == 'app_dashboard' ? 'active' }}"
+                       aria-current="page" href="{{ path('app_dashboard') }}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ app.request.attributes.get("_route") == 'app_user_edit' ? 'active' }}"
@@ -78,8 +78,8 @@
     <div class="offcanvas-body">
         <ul class="nav nav-pills flex-column">
             <li class="nav-item">
-                <a class="nav-link {{ app.request.attributes.get("_route") == 'app_home' ? 'active' }}"
-                   aria-current="page" href="{{ path('app_home') }}">Home</a>
+                <a class="nav-link {{ app.request.attributes.get("_route") == 'app_dashboard' ? 'active' }}"
+                   aria-current="page" href="{{ path('app_dashboard') }}">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ app.request.attributes.get("_route") == 'app_user_edit' ? 'active' }}"

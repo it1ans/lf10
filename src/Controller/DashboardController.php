@@ -9,9 +9,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 
-class HomeController extends AbstractController
+class DashboardController extends AbstractController
 {
-    #[Route('/', name: 'app_home')]
+    #[Route('/', name: 'app_dashboard')]
     public function index(
         WeightCalculationServiceInterface $weightCalculationService,
         Security                          $security
@@ -30,7 +30,7 @@ class HomeController extends AbstractController
             $idealWeight = 'Please add data in user settings';
         }
 
-        return $this->render('home/index.html.twig', [
+        return $this->render('dashboard/index.html.twig', [
             'idealWeight' => $idealWeight
         ]);
     }
