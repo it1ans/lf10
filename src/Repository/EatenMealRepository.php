@@ -36,6 +36,30 @@ class EatenMealRepository extends ServiceEntityRepository
         ;
     }
 
+    /**
+     * @param UserInterface $user
+     * @return float
+     */
+    public function findTodayCalories(UserInterface $user): float
+    {
+        $today = new \DateTime('today');
+        $tomorrow = new \DateTime('tomorrow');
+
+        $qb = $this->createQueryBuilder('eaten_meal');
+        return $qb
+            ->join('eaten_meal.meal', 'meal')
+            ->select('SUM(meal.calories) as caloriesSum')
+            ->where(
+                $qb->expr()->between('eaten_meal.createdAt', ':today', ':tomorrow')
+            )
+            ->andWhere('eaten_meal.user = :user')
+            ->setParameter('today', $today)
+            ->setParameter('tomorrow', $tomorrow)
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
 //    /**
 //     * @return EatenMeal[] Returns an array of EatenMeal objects
 //     */
