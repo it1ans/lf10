@@ -30,7 +30,8 @@ class UserFixtures extends Fixture
                 'age' => 32,
                 'gender' => GenderEnum::MALE,
                 'height' => 178,
-                'bodyType' => BodyTypeEnum::DAINTILY,
+                'weight' => 95,
+                'bodyType' => BodyTypeEnum::STRONG,
             ],
             [
                 'name' => 'Kalle Dude',
@@ -39,6 +40,7 @@ class UserFixtures extends Fixture
                 'age' => 24,
                 'gender' => GenderEnum::MALE,
                 'height' => 185,
+                'weight' => 80,
                 'bodyType' => BodyTypeEnum::NORMAL,
             ],
         ];
@@ -51,6 +53,7 @@ class UserFixtures extends Fixture
             $user->setAge($userData['age']);
             $user->setGender($userData['gender']);
             $user->setHeight($userData['height']);
+            $user->setWeight($userData['weight']);
             $user->setBodyType($userData['bodyType']);
             $manager->persist($user);
         }

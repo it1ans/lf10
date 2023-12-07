@@ -40,13 +40,7 @@ class MealFixtures extends Fixture implements DependentFixtureInterface
                 'name' => 'Cheeseburger',
                 'calories' => 1200,
                 'imageFilename' => 'cheeseburger.jpg',
-                'public' => false,
-            ],
-            [
-                'name' => 'blah',
-                'calories' => 1200,
-                'imageFilename' => 'cheeseburger.jpg',
-                'public' => false,
+                'public' => true,
             ],
         ];
 

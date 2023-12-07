@@ -39,7 +39,7 @@ class EatenMealRepository extends ServiceEntityRepository
      * @param UserInterface $user
      * @return float
      */
-    public function findTodayCalories(UserInterface $user): float
+    public function findTodayCalories(UserInterface $user): float|null
     {
         $today = new \DateTime('today');
         $tomorrow = new \DateTime('tomorrow');
