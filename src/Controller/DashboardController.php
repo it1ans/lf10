@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Repository\EatenMealRepository;
 use App\Service\WeightCalculationServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,15 +14,16 @@ class DashboardController extends AbstractController
 {
     #[Route('/', name: 'app_dashboard')]
     public function index(
+        EatenMealRepository               $eatenMealRepository,
+        Security                          $security,
         WeightCalculationServiceInterface $weightCalculationService,
-        Security                          $security
     ): Response
     {
         if (!$security->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirectToRoute('app_homepage');
         }
 
-        $user = $security->getUser();
+        $user = $this->getUser();
         assert($user instanceof User);
 
         if (!is_null($user->getHeight()) && !is_null($user->getAge())) {
@@ -30,8 +32,21 @@ class DashboardController extends AbstractController
             $idealWeight = 'Please add data in user settings';
         }
 
+        $dailyMeals = $eatenMealRepository->findTodayMeals($user);
+        $usedCalories = $eatenMealRepository->findTodayCalories($user);
+
+        if (!is_null($user->getWeight()) && !is_null($user->getGender())) {
+            $dailyCalories = $weightCalculationService->calculateDailyCalories($user->getWeight(), $user->getGender());
+        } else {
+            $this->addFlash('danger', 'Please add at least weight and gender data');
+            return $this->redirectToRoute('app_user_edit');
+        }
+
         return $this->render('dashboard/index.html.twig', [
-            'idealWeight' => $idealWeight
+            'idealWeight' => $idealWeight,
+            'dailyMeals' => $dailyMeals,
+            'dailyCalories' => $dailyCalories,
+            'usedCalories' => $usedCalories,
         ]);
     }
 }
