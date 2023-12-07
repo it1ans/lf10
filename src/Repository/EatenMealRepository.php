@@ -32,8 +32,7 @@ class EatenMealRepository extends ServiceEntityRepository
             ->andWhere('eaten_meal.user = :val')
             ->setParameter('val', $user)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
 
     /**
@@ -58,6 +57,28 @@ class EatenMealRepository extends ServiceEntityRepository
             ->setParameter('user', $user)
             ->getQuery()
             ->getSingleScalarResult();
+    }
+
+    /**
+     * @param UserInterface $user
+     * @return EatenMeal[]
+     */
+    public function findTodayMeals(UserInterface $user): array
+    {
+        $today = new \DateTimeImmutable('today');
+        $tomorrow = new \DateTimeImmutable('tomorrow');
+
+        $qb = $this->createQueryBuilder('eaten_meal');
+        return $qb
+            ->where(
+                $qb->expr()->between('eaten_meal.createdAt', ':today', ':tomorrow')
+            )
+            ->andWhere('eaten_meal.user = :user')
+            ->setParameter('today', $today)
+            ->setParameter('tomorrow', $tomorrow)
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
     }
 
 //    /**

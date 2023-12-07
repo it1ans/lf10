@@ -1,0 +1,180 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Home | StayFit
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-3">
+
+        <div class="row gy-3 mb-3">
+            <div class="col-md-4">
+                <div class="card bg-primary text-light border-dark">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-content-center">
+                            <div>
+                                <h5 class="card-title">Today's meals</h5>
+                                <p class="card-text"><span class="fw-bold">{{ dailyMeals|length }}</span></p>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-utensils pe-3 fs-2"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-primary text-light border-dark">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-content-center">
+                            <div>
+                                <h5 class="card-title">Today's calories</h5>
+                                <p class="card-text"><span class="fw-bold">{{ dailyCalories }}</span></p>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-bowl-food pe-3 fs-2"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-primary text-light border-dark">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-content-center">
+                            <div>
+                                <h5 class="card-title">Available Calories</h5>
+                                <p class="card-text"><span class="fw-bold">{{ dailyCalories - usedCalories }}</span>
+                                    ({{ usedCalories }} / {{ dailyCalories }})</p>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-calculator pe-3 fs-2"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row gy-3 mb-3">
+            <div class="col-lg-6">
+                <div class="row gy-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="gradient-profile">
+                                    <img src="{{ asset('img/download.png') }}" alt="User profile picture"
+                                         class="user-profile-image">
+                                </div>
+                                <h3>{{ app.user.name }}</h3>
+                                <p class="text-body-secondary">Account-Type: <strong>Administrator</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h3 class="mb-3 fw-light">User information</h3>
+                                <div class="row">
+                                    <div class="col col-md-3 offset-md-3 border-end">
+                                        <p>Age</p>
+                                        <p>Height</p>
+                                        <p>Body Type</p>
+                                        <p class="fw-bold">Ideal Weight</p>
+                                    </div>
+                                    <div class="col col-md-3">
+                                        <p>{{ app.user.age ?? "?" }}</p>
+                                        <p>{{ app.user.height ?? "?" }}</p>
+                                        <p>{{ app.user.bodyType.value|capitalize }}</p>
+                                        <p>{{ idealWeight }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="row gy-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="text-center">Meals</h3>
+                                <hr/>
+                                <div class="d-grid gap-2 col-6 mx-auto">
+                                    <a href="{{ path('app_meal_index') }}"
+                                       class="btn btn-outline-primary">List of meals</a>
+                                    <a href="{{ path('app_eatenMeal_list') }}" class="btn btn-outline-primary">Today's
+                                        eaten
+                                        meals</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="mb-3 fw-light text-center">Recommended video</h3>
+                                <div class="p-2 border rounded">
+                                    <div class="ratio ratio-16x9">
+                                        <iframe src="https://www.youtube.com/embed/Osd4DLpMNp4?rel=0"
+                                                title="YouTube video"
+                                                allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Recommended Recipes planned feature -->
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="fw-light text-center">Upcoming Feature: Meal Recipes</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row gy-3 mb-3">
+
+            {% for i in 0..5 %}
+
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="fw-light">
+                                <span class="fw-normal">#{{ i + 1 }}</span> {{ random(['Lorem ipsum', 'dolor sit', 'amet consectetur', 'adipiscing elit', 'sed do', 'eiusmod tempor', 'incididunt ut', 'labore et', 'dolore magna', 'aliqua Ut', 'enim ad', 'minim veniam', 'quis nostrud', 'exercitation ullamco', 'laboris nisi', 'ut aliquip', 'ex ea', 'commodo consequat', 'Duis aute', 'irure dolor', 'in reprehenderit', 'in voluptate', 'velit esse', 'cillum dolore', 'eu fugiat', 'nulla pariatur', 'Excepteur sint', 'occaecat cupidatat', 'non proident', 'sunt in', 'culpa qui', 'officia deserunt', 'mollit anim', 'id est', 'laborum']) }}
+                            </h5>
+                            <hr/>
+                            <div class="row">
+                                <div class="col-6">
+                                    <p>Calories</p>
+                                    <p>Type</p>
+                                    <p>Time</p>
+                                </div>
+                                <div class="col-6">
+                                    <p>{{ random(50,500) }}</p>
+                                    <p>{{ random(['Pasta', 'Salads', 'Vegetarian', 'Grilled Proteins', 'Soup', 'Breakfast', 'Sandwiches', 'Wraps']) }}</p>
+                                    <p>{{ random(10,45) }} minutes</p>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="row gy-1">
+                                <div class="col-xl-6">
+                                    <button class="btn btn-lg btn-outline-primary w-100">Eaten</button>
+                                </div>
+                                <div class="col-xl-6">
+                                    <button class="btn btn-lg btn-outline-secondary w-100">To Recipe</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+

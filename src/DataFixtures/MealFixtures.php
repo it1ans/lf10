@@ -42,6 +42,12 @@ class MealFixtures extends Fixture implements DependentFixtureInterface
                 'imageFilename' => 'cheeseburger.jpg',
                 'public' => false,
             ],
+            [
+                'name' => 'blah',
+                'calories' => 1200,
+                'imageFilename' => 'cheeseburger.jpg',
+                'public' => false,
+            ],
         ];
 
         $imagePath = 'build/../uploads/meals/';

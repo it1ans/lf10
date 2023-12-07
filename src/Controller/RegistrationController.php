@@ -27,7 +27,7 @@ class RegistrationController extends AbstractController
         if ($this->isGranted('ROLE_USER')) {
             $this->addFlash('success', 'Already logged in');
 
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_dashboard');
         }
         $user = new User();
         $user->setBodyType(BodyTypeEnum::NORMAL);

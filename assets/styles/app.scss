@@ -3,6 +3,13 @@
 
 @import "~bootstrap/scss/bootstrap";
 
+// importing fontawesome core styling file
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+
+// our project needs Solid + Brands
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
+
 body {
   background-color: #e9e9e9;
 }
