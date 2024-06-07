@@ -9,7 +9,7 @@ services:
             MYSQL_PASSWORD: admin
         image: mariadb:10.9
         ports:
-            - "3306:3306"
+            - "8021:3306"
         volumes:
             - database:/var/lib/mysql
 
@@ -18,7 +18,7 @@ services:
         links:
             - php
         ports:
-            - "80:80"
+            - "8020:80"
         user: "app"
         volumes:
             - ./:/var/www/project
