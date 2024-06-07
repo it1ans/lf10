@@ -13,7 +13,10 @@
                                     <div class="p-4 p-md-5">
                                         <div class="h2 fw-bolder">Our Vision</div>
                                         <p>At StayFit, we have set ourselves the goal of supporting you in achieving your dream body! StayFit is our means to provide you with an easily accessible way to adapt your lifestyle to be healthy and future-oriented. You only have one body, so what are you waiting for? Take care of it and register now for free!</p>
-                                        <a class="order-3 m-1 btn btn-outline-secondary" type="button" href="{{ path('app_register') }}">Register</a>
+                                        {% if not app.user %}
+                                            <a class="order-3 m-1 btn btn-outline-secondary" type="button" href="{{ path('app_register') }}">Register</a>
+                                        {% endif %}
+
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-xl-7"><div class="bg-featured-blog" style="background-image: url('https://dummyimage.com/700x350/343a40/6c757d')"></div></div>
